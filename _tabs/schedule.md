@@ -2,7 +2,7 @@
 title: Schedule
 icon: fa fa-calendar-days
 order: 30
-published: true
+published: false
 ---
 
 This is a draft schedule and is subject to change.
