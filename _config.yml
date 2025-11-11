@@ -99,9 +99,9 @@ comments:
   provider: giscus
   giscus:
     repo: "pre-cosyne-brainhack/hackathon2026"
-    repo_id: "R_kgDOM-UrUg"
+    repo_id: "R_kgDOQTe1Ww"
     category: "Discussions"
-    category_id: "DIC_kwDOM-UrUs4CjR5X"
+    category_id: "DIC_kwDOQTe1W84CxrIe"
     # mapping: # optional, default to 'pathname'
     # strict: "1" # optional, default to '0'
     # input_position: # optional, default to 'bottom'
