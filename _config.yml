@@ -16,7 +16,7 @@ timezone: Europe/Lisbon
 
 title: Pre-COSYNE Brainhack 2026 # the main title
 
-tagline: March 25–26 2025, Montreal # it will display as the subtitle
+tagline: March 10–11 2026, Lisbon # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   The 2026 edition of the Pre-COSYNE Brainhack in Lisbon, Portugal.
@@ -98,7 +98,7 @@ toc: true
 comments:
   provider: giscus
   giscus:
-    repo: "pre-cosyne-brainhack/hackathon2025"
+    repo: "pre-cosyne-brainhack/hackathon2026"
     repo_id: "R_kgDOM-UrUg"
     category: "Discussions"
     category_id: "DIC_kwDOM-UrUs4CjR5X"
