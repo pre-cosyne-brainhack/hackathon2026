@@ -10,7 +10,7 @@ toc: true
 - [Overview & goals](#overview--goals)
 - [Brainhack format](#brainhack-format)
 - [Dataset](#dataset)
-- [Questions & tasks](#questions--tasks)
+- [Questions & tasks](#questions)
 - [How to prepare](#how-to-prepare)
 
 ---
