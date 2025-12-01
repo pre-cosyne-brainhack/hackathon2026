@@ -10,37 +10,47 @@ toc: true
 - [Overview & goals](#overview--goals)
 - [Brainhack format](#brainhack-format)
 - [Dataset](#dataset)
-- [Questions & tasks](#questions)
+- [Questions](#questions)
 - [How to prepare](#how-to-prepare)
 
 ---
 
 ## Overview & goals
 
-This year's Pre-COSYNE Brainhack is inspired by CON²PHYS (CONceptual CONsistency in electroPHYSiology).
-This project stems from the convinction that systems neuroscience shows signs of conceptual fragmentation: terms like "representation" or "functional
-connectivity" are central to our research, yet their meanings shift across subfields and labs. Do these differences
-make a difference? That's the question that CON²PHYS sets out to answer.
-CON²PHYS is a collaborative meta-science experiment that quantifies how differences in implementation, from concept to code, affect results in concrete ways. 
-Its goal is to reveal how the many arbitrary algorithmic and parameter choices involved in operationalizing concepts such as "spike-spike correlations",
-"functional connectivity", or "dimensionality" can lead to divergent outcomes. Participants will analyze the same
-electrophysiology dataset and, using their own methodological assumptions, answer a set of deliberately underspecified multiple-choice questions
-that map to core systems neuroscience concepts. The approach is designed to simulate how the
-community would implement these concepts in a real research setting.
+This year's Pre-COSYNE Brainhack draws its inspiration from [CON²PHYS](https://mchini.github.io/con2phys/) — CONceptual CONsistency in electroPHYSiology. 
+The project starts from a simple but pressing observation: systems neuroscience is full of core concepts whose meanings quietly drift from lab to lab. 
+Ideas like functional connectivity, or even something as basic as spike–spike correlations are central to our work, yet they often are conceptualised 
+and implemented differently depending on who you ask.
+
+Do these differences actually matter? 
+That's exactly what we will find out.
+
+During the Brainhack, participants will analyze the same electrophysiology dataset and, guided by their own methodological assumptions, 
+answer a set of deliberately underspecified multiple-choice questions tied to core systems neuroscience concepts. 
+This setup mirrors real research, revealing how researchers navigate conceptual ambiguity and how arbitrary analytical choices 
+practically impact scientific results.
 
 ## Brainhack format
 
-In this year's pre-COSYNE brainhack, you will answer 4 of the 15 questions that are part of CON²PHYS, using the exact same data as the full project. 
-You'll work in teams of 3–4, balanced in terms of prior electrophysiology experience and coding skills. During the hackathon, there will be presentations
-given by Research Software Engineers (RSEs) on how to increase reproducibility of our science with better and more standardized code.
-The goal is not necessarily to "find the right answer", but to take stock of the (potential) lack of consensus that might emerge and, through
-active discussion, try to find practical ways on how to address this issue.
+In this year's Pre-COSYNE Brainhack, you will answer 4 of the 15 multiple-choice questions
+that are part of CON²PHYS, using the exact same data as the full project. 
+You'll work in teams of 3–4, balanced in terms of prior electrophysiology experience and coding skills. During the hackathon, 
+Research Software Engineers (RSEs) will give short, practical sessions on how to make analyses more reproducible with cleaner code, 
+standard data layouts, and basic testing (**to be adjusted based on the actual content of the talks**).
+The goal is not necessarily to "find the right answer", but to take stock of the lack of consensus that might emerge. 
+We expect heterogeneity in both answers and methods, and a part of the event will focus on discussing how and why 
+different teams arrived at different conclusions.
+
+Since the Brainhack already covers a significant portion of the 15 CON²PHYS questions, participants are well positioned to later extend their analyses 
+to the full set of questions and complete a [CON²PHYS submission](https://mchini.github.io/con2phys/contribution_and_manuscript.html) 
+that will make them eligible for co-authorship on the manuscript resulting from the project.
 
 ## Dataset
 
-The dataset consists of 18 compressed files, each corresponding to one of the 18 mice included in the dataset.
+The [dataset](https://ibl-brain-wide-map-public.s3.amazonaws.com/index.html#resources/con2phys/) consists of 18 compressed files, 
+each corresponding to one of the 18 mice included in the dataset.
 The data includes single-unit activity (SUA) and local field potentials (LFP) recorded using a Neuropixels probe during a behavioral task.
-Task details and electrode placements are intentionally kept minimal to reduce biases and minimize workload. 
+Task details and electrode placements are intentionally anonymized to reduce biases and minimize workload. 
 The data has been collected from 3 simultaneously recorded brain areas.
 Every recording includes LFP (≥20 channels) and SUA (≥5 units, total of 1449 units) signals from each brain area.
 The length of the recordings varies between 55 and 101 minutes.
@@ -63,9 +73,9 @@ A spreadsheet containing trial-specific information, all aligned with the ephys 
 - **`stim_start`** (s): Stimulus presentation.
 - **`outcome`** (s): Reward or punishment time.
 - **`trial_end`** (s): Trial conclusion (the trial length is variable).
-- **`Variable A`**: Binary qualitative behavioral variable.
-- **`Variable B`**: Binary qualitative behavioral variable.
-- **`Variable C`**: Qualitative behavioral variable (1–3).
+- **`Variable A`**: Binary categorical behavioral variable.
+- **`Variable B`**: Binary categorical behavioral variable.
+- **`Variable C`**: Categorical behavioral variable (1–3).
 
 ---
 
@@ -78,45 +88,48 @@ A spreadsheet containing trial-specific information, all aligned with the ephys 
 
 #### Spikes (`.npy`, `.mat`) {#spikes}
 
-- **`[1 × num_spikes]`** array with spike times (s).  
+- **`[1 × num_spikes]`** array with float spike times (s).  
 
 ---
 
 #### Clusters (`.npy`, `.mat`) {#clusters}
 
-- **`[1 × num_spikes]`** array linking each spike to a cluster ID.  
+- **`[1 × num_spikes]`** array with integer values representing the cluster ID to which each spike corresponds to. Please note that, accordingly,
+this array has the same length as `spikes`.  
 
 ---
 
 #### Waveforms (`.npy`, `.mat`) {#waveforms}
 
-- **`[num_units × 128]`** array of average waveforms for each unit, recorded at 30 kHz on the best detection channel.  
+- **`[num_units × 128]`** float array of average waveforms for each unit, recorded at 30 kHz on the best detection channel.  
 - The order of waveforms matches that of cluster IDs and brain areas in `brain_area`.  
 
 ---
 
 #### Local Field Potentials (LFP) (`.npy`, `.mat`) {#local-field-potentials-lfp}
 
-- `lfp1`, `lfp2`, `lfp3` each contain `[num_channels × timestamps]` arrays of LFP signals.  
+- `lfp1`, `lfp2`, `lfp3` each contain `[num_channels × timestamps]` float arrays of LFP signals.  
 - The number of channels varies from brain area to brain and from mouse to mouse. The minimum number of channels per brain area is 20.  
 - Channels within a brain area are contiguous in space, but channels from different brain areas are not.  
 - Channels within a brain area are ordered from the deepest to the most superficial with respect to the brain surface.  
-- The dataset comprises one channel every two that have been recorded on the Neuropixel probe. The vertical spacing between recording sites is 20µM  
+- The dataset comprises one channel every two that have been recorded on the Neuropixel probe. The vertical spacing between recording sites is 20µM.  
 - The signal has been recorded with an external reference and has already undergone a preprocessing pipeline.  
 - Sampling rate: 500 Hz.  
 
 
 ## Questions
 
-In this hackathon, you will work on four questions of the fifteen that make up the full CON²PHYS project.\
+In this hackathon, you will work on 4 of the 15 [questions](https://mchini.github.io/con2phys/questions.html) that make up the full CON²PHYS project.\
 For each question, you will:
 - choose one categorical answer from the options below  
 - briefly describe your analysis  
   (inclusion/exclusion criteria, analysis steps, statistics, and any key results)  
 
+Below are the 4 questions that will be asked during the hackathon.
+
 ---
 
-**Which brain area (if any) has the highest density of ripples (i.e. "hippocampal" ripples traditionally occurring during sharp wave-ripples)?**  
+**1. Which brain area (if any) has the highest density of ripples (i.e. "hippocampal" ripples traditionally occurring during sharp wave-ripples)?**  
 
 - Brain area 1  
 - Brain area 2  
@@ -125,7 +138,7 @@ For each question, you will:
 
 ---
 
-**In which brain area are pairwise spike train interactions strongest at the 100 ms timescale?**  
+**2. In which brain area are pairwise spike train interactions strongest at the 100 ms timescale?**  
 
 - Brain area 1  
 - Brain area 2  
@@ -134,7 +147,7 @@ For each question, you will:
 
 ---
 
-**Which brain area pair has the strongest directed functional connectivity?**  
+**3. Which brain area pair has the strongest directed functional connectivity?**  
 
 - Brain area 1 ⇒ Brain area 2  
 - Brain area 3 ⇒ Brain area 2  
@@ -143,7 +156,7 @@ For each question, you will:
 
 ---
 
-**During which trial segment is variable C best decoded?**  
+**4. During which trial segment is variable C best decoded?**  
 
 - Trial start ⇒ Stim start  
 - Stim start ⇒ Outcome  
@@ -152,36 +165,18 @@ For each question, you will:
 
 ## How to prepare
 
-Download and unzip the dataset before the hackathon. 
-This is crucial: time for answering the questions will be limited, 
-and you do not want to waste it downloading or unpacking data during the event.
-Set up your coding environment in advance (see below).
+Preparing in advance is crucial: time for hacking will be limited, and you want to use to tackle the questions.
 
-#### Data and code
+Download and unzip the [dataset](https://ibl-brain-wide-map-public.s3.amazonaws.com/index.html#resources/con2phys/) before the hackathon. 
+The dataset is roughly ~29 Gb and consists of 18 zipped files. Download them one by one to maximize speed. Here, we are only giving the python 
+version of the dataset. If you want to use Matlab, please write to [Mattia Chini](mailto:mchini@uliege.be).
 
-- Data (Python format, ~29 GB) is here XXX  
-- Data (Matlab format, ~29 GB) is here XXX  
-- Python code snippets to check that you downloaded and unzipped the full dataset correctly,  
-  and to load / trialize the data, are here XXX  
+Next, set up your coding environment. You are free to use the environment you prefer 
+(e.g. your usual Python or Matlab setup). The configuration below is only a suggestion that provides a ready-to-use Python environment 
+with Anaconda / Miniconda, and ensures that these [example notebooks]({{ "/assets/downloads/code-snippets.zip" | relative_url }})
+run smoothly. You can use these notebooks to check that you downloaded the full dataset correctly, and to start playing with the data. 
 
-
-
-#### Coding environment (suggested setup)
-
-You are free to use any coding environment you prefer during the hackathon  
-(e.g. your usual Python or Matlab setup).  
-
-The configuration below is only a suggestion.  
-It provides a ready-to-use Python environment with Anaconda / Miniconda,  
-ensuring that the example notebooks run smoothly.  
-
-
-
-#### Python environment
-
-1. Install **Miniconda / Anaconda**  
-
-   https://www.anaconda.com/download  
+1. Install [Miniconda / Anaconda](https://www.anaconda.com/download)
 
 2. Create the environment using the provided `environment.yml` file:  
 
@@ -189,8 +184,8 @@ ensuring that the example notebooks run smoothly.
    
 3. Check that everything runs correctly by starting Jupyter and opening the example notebooks.
 
-For electrophysiological data analysis, you are welcome to use your favourite packages and pipelines. 
-If you have never done it before, we recommend installing these packages:
+You are welcome to use your favourite packages and pipelines, but if you are unsure where to begin with, here are some recommended packages:
 - neurodsp (pip install neurodsp) digital signal processing toolbox (for neural time series)
 - mne (pip install mne) digital signal processing toolbox (for neurophysiological data)
 - pynapple (pip install pynapple) general neurophysiological data analysis
+- **please add as you see fit**
