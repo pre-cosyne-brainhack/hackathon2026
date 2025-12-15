@@ -5,23 +5,15 @@ order: 20
 published: true
 ---
 
-<style>
-.form-embed {
-  width: 100%;
-  max-width: 100%;
-  border: 0;
-}
-</style>
+# Registration
 
-<iframe
-  class="form-embed"
-  src="https://docs.google.com/forms/d/e/1FAIpQLSfGfQO5LSELy6h75_0wZx2rzkiwadvCNBHLqu7guQ0Q3r2IoQ/viewform?embedded=true"
-  width="640"
-  height="1700"
-  frameborder="0"
-  marginheight="0"
-  marginwidth="0"
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-Loading…
-</iframe>
+
+
+To apply for the 2026 Pre-COSYNE Brainhack, please fill out the [registration form](https://forms.gle/tSBL1Stgo1RJsTJt5){:target="_blank" rel="noopener"}
+
+You will receive an automated confirmation email after submitting your application. If you don’t see it, please check your spam folder.
+
+
+
+
+
