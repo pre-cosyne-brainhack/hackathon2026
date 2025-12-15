@@ -16,8 +16,7 @@ published: true
 <iframe
   class="form-embed"
   src="https://docs.google.com/forms/d/e/1FAIpQLSfGfQO5LSELy6h75_0wZx2rzkiwadvCNBHLqu7guQ0Q3r2IoQ/viewform?embedded=true"
-  width="640"
-  height="1700"
+  height="2200"
   frameborder="0"
   marginheight="0"
   marginwidth="0"
