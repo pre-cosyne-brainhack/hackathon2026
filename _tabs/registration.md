@@ -5,6 +5,9 @@ order: 20
 published: true
 ---
 
+**Deadline:** Sunday, January 18 at 5:00 PM (London time).  
+**Notification:** We will notify applicants of the outcome by the end of January.
+
 <style>
 .form-embed {
   width: 100%;
