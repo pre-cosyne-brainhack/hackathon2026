@@ -5,7 +5,7 @@ order: 20
 published: true
 ---
 
-**Deadline:** Sunday, January 18 at 5:00 PM (London time).  
+**Deadline:** Sunday, January 25 at 5:00 PM (London time). The deadline has been extended by one Week!
 **Notification:** We will notify applicants of the outcome by the end of January.
 
 <style>
