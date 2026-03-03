@@ -13,12 +13,6 @@ table th:nth-of-type(2) {
 }
 </style>
 
-### Monday, March 9th
-
-| Time  | Description            |
-| :---- | :--------------------- |
-| 18:30 | Dinner (not mandatory) |
-
 ### Tuesday, March 10th
 
 | Time  | Description            |
