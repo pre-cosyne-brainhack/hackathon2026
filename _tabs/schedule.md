@@ -46,5 +46,5 @@ table th:nth-of-type(2) {
 | 17:00 | Teams present their approaches                  |
 | 17:30 | Open discussion on reproducibility              |
 | 18:20 | Concluding remarks                              |
-| 18:30 | Dinner                                          |
+| 18:30 | Dinner (not mandatory)                          |
 
