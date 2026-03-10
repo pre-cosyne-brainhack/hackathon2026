@@ -26,7 +26,8 @@ table th:nth-of-type(2) {
 | 16:00 | 30min RSE presentation |
 | 16:30 | Coffee break           |
 | 17:00 | Hacking                |
-| 18:30 | Dinner                 |
+| 18:30 | Socializing / Hacking  |
+| 19:30 | Dinner                 |
 
 ### Wednesday, March 11th
 
